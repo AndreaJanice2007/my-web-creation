@@ -6,14 +6,15 @@ import cheesecakes from "@/assets/cheesecakes.jpg";
 import giftboxes from "@/assets/giftboxes.jpg";
 import hero from "@/assets/hero.jpg";
 
-export type CategorySlug = "cakes" | "brownies" | "cookies" | "cupcakes" | "cheesecakes" | "gift-boxes";
+export type CategorySlug = "cakes" | "brownies" | "cookies" | "cupcakes" | "cheesecakes" | "dessert-cups" | "gift-boxes";
 
 export const categories: { slug: CategorySlug; name: string; blurb: string; image: string }[] = [
   { slug: "cakes", name: "Celebration Cakes", blurb: "Layered, frosted and made for the big day.", image: cakes },
   { slug: "brownies", name: "Brownies", blurb: "Fudgy centres, crackly tops.", image: brownies },
   { slug: "cookies", name: "Cookies", blurb: "Golden edges, gooey middles.", image: cookies },
   { slug: "cupcakes", name: "Cupcakes", blurb: "Little cakes, big swirls.", image: cupcakes },
-  { slug: "cheesecakes", name: "Cheesecakes & Desserts", blurb: "Creamy, silky, spoon-worthy.", image: cheesecakes },
+  { slug: "cheesecakes", name: "Cheesecakes", blurb: "Creamy, silky, slice-worthy.", image: cheesecakes },
+  { slug: "dessert-cups", name: "Dessert Cups", blurb: "Layered little jars of joy.", image: "/products/tiramisu-dessert-cup.jpg" },
   { slug: "gift-boxes", name: "Dessert Gift Boxes", blurb: "Sweetness, beautifully boxed.", image: giftboxes },
 ];
 
@@ -48,9 +49,6 @@ export type Product = {
   createdAt: number;
 };
 
-const catImg: Record<CategorySlug, string> = {
-  cakes, brownies, cookies, cupcakes, cheesecakes, "gift-boxes": giftboxes,
-};
 
 const rs = (n: number) => n * 100;
 const pieces = (unit: number): Variant[] => [
@@ -94,8 +92,12 @@ const seeds: Seed[] = [
   ["Custom Celebration Cake", "cakes", 1299, "Designed with you, for your celebration.", { prepHours: 72 }],
   ["Baked New York Cheesecake", "cheesecakes", 220, "Rich, creamy and baked low and slow."],
   ["Blueberry Cheesecake", "cheesecakes", 240, "Creamy cheesecake with blueberry compote.", { featured: true }],
-  ["Chocolate Mousse Cup", "cheesecakes", 180, "Airy dark chocolate mousse."],
-  ["Tiramisu Dessert Cup", "cheesecakes", 220, "Coffee-soaked layers and mascarpone cream."],
+  ["Alphonso Mango Cheesecake", "cheesecakes", 260, "Silky cheesecake crowned with mango glaze.", { badge: "New" }],
+  ["Lotus Biscoff Cheesecake", "cheesecakes", 260, "Spiced biscuit base, Biscoff swirl and crumbs."],
+  ["Tiramisu Dessert Cup", "dessert-cups", 220, "Coffee-soaked layers and mascarpone cream.", { featured: true }],
+  ["Chocolate Mousse Cup", "dessert-cups", 180, "Airy dark chocolate mousse."],
+  ["Banoffee Dessert Cup", "dessert-cups", 200, "Banana, toffee and whipped cream on a biscuit crumb."],
+  ["Strawberry Shortcake Cup", "dessert-cups", 210, "Vanilla sponge, fresh strawberries and cream."],
   ["Brownie Gift Box", "gift-boxes", 499, "Six assorted brownies, beautifully boxed.", { featured: true }],
   ["Cookie Celebration Box", "gift-boxes", 399, "Eight assorted cookies for sharing."],
   ["Mixed Dessert Box", "gift-boxes", 699, "Brownies, cookies and mini cupcakes together.", { badge: "Bestseller" }],
@@ -104,10 +106,10 @@ const seeds: Seed[] = [
 
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-export const products: Product[] = seeds.map(([name, category, price, short, extra = {}], i) => {
+export const seedProducts: Product[] = seeds.map(([name, category, price, short, extra = {}], i) => {
   const isCake = category === "cakes";
   const isBox = category === "gift-boxes";
-  const isSlice = category === "cheesecakes";
+  const isSlice = category === "cheesecakes" || category === "dessert-cups";
   const variants = isCake
     ? cakeSizes(price)
     : isBox
@@ -137,14 +139,13 @@ export const products: Product[] = seeds.map(([name, category, price, short, ext
     containsEgg: true,
     rating: Math.round((4.5 + ((i * 7) % 5) / 10) * 10) / 10,
     reviews: 18 + ((i * 13) % 90),
-    image: catImg[category],
+    image: `/products/${slugify(name)}.jpg`,
     createdAt: i,
     ...extra,
   } as Product;
 });
 
 export const heroImage = hero;
-export const getProduct = (slug: string) => products.find((p) => p.slug === slug);
 export const getCategory = (slug: string) => categories.find((c) => c.slug === slug);
 export const formatINR = (paise: number) =>
   "₹" + (paise / 100).toLocaleString("en-IN", { maximumFractionDigits: 0 });
