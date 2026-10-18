@@ -14,16 +14,345 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      delivery_zones: {
+        Row: {
+          active: boolean
+          fee: number
+          id: string
+          name: string
+          pins: string[]
+        }
+        Insert: {
+          active?: boolean
+          fee?: number
+          id?: string
+          name: string
+          pins?: string[]
+        }
+        Update: {
+          active?: boolean
+          fee?: number
+          id?: string
+          name?: string
+          pins?: string[]
+        }
+        Relationships: []
+      }
+      order_items: {
+        Row: {
+          id: string
+          line_total: number
+          name: string
+          options: Json
+          order_id: string
+          product_id: string | null
+          qty: number
+          unit_price: number
+          variant: string
+        }
+        Insert: {
+          id?: string
+          line_total: number
+          name: string
+          options?: Json
+          order_id: string
+          product_id?: string | null
+          qty: number
+          unit_price: number
+          variant: string
+        }
+        Update: {
+          id?: string
+          line_total?: number
+          name?: string
+          options?: Json
+          order_id?: string
+          product_id?: string | null
+          qty?: number
+          unit_price?: number
+          variant?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          address: string | null
+          created_at: string
+          customer_name: string
+          delivery_fee: number
+          email: string | null
+          fulfilment: string
+          id: string
+          notes: string | null
+          order_number: string
+          payment_method: string
+          payment_status: string
+          phone: string
+          pincode: string | null
+          razorpay_order_id: string | null
+          razorpay_payment_id: string | null
+          scheduled_date: string
+          slot: string
+          status: string
+          subtotal: number
+          total: number
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          address?: string | null
+          created_at?: string
+          customer_name: string
+          delivery_fee?: number
+          email?: string | null
+          fulfilment: string
+          id?: string
+          notes?: string | null
+          order_number: string
+          payment_method: string
+          payment_status?: string
+          phone: string
+          pincode?: string | null
+          razorpay_order_id?: string | null
+          razorpay_payment_id?: string | null
+          scheduled_date: string
+          slot: string
+          status?: string
+          subtotal: number
+          total: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          address?: string | null
+          created_at?: string
+          customer_name?: string
+          delivery_fee?: number
+          email?: string | null
+          fulfilment?: string
+          id?: string
+          notes?: string | null
+          order_number?: string
+          payment_method?: string
+          payment_status?: string
+          phone?: string
+          pincode?: string | null
+          razorpay_order_id?: string | null
+          razorpay_payment_id?: string | null
+          scheduled_date?: string
+          slot?: string
+          status?: string
+          subtotal?: number
+          total?: number
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      pickup_slots: {
+        Row: {
+          active: boolean
+          id: string
+          label: string
+          sort: number
+        }
+        Insert: {
+          active?: boolean
+          id?: string
+          label: string
+          sort?: number
+        }
+        Update: {
+          active?: boolean
+          id?: string
+          label?: string
+          sort?: number
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          addons: Json
+          allergens: string
+          allows_gift_note: boolean
+          allows_message: boolean
+          badge: string | null
+          category: string
+          created_at: string
+          description: string
+          featured: boolean
+          flavours: string[] | null
+          id: string
+          image_url: string
+          ingredients: string
+          is_active: boolean
+          max_qty: number
+          min_qty: number
+          name: string
+          prep_hours: number
+          rating: number
+          reviews: number
+          short: string
+          slug: string
+          sort: number
+          stock: number
+          unit: string
+          variants: Json
+        }
+        Insert: {
+          addons?: Json
+          allergens?: string
+          allows_gift_note?: boolean
+          allows_message?: boolean
+          badge?: string | null
+          category: string
+          created_at?: string
+          description?: string
+          featured?: boolean
+          flavours?: string[] | null
+          id?: string
+          image_url?: string
+          ingredients?: string
+          is_active?: boolean
+          max_qty?: number
+          min_qty?: number
+          name: string
+          prep_hours?: number
+          rating?: number
+          reviews?: number
+          short?: string
+          slug: string
+          sort?: number
+          stock?: number
+          unit?: string
+          variants?: Json
+        }
+        Update: {
+          addons?: Json
+          allergens?: string
+          allows_gift_note?: boolean
+          allows_message?: boolean
+          badge?: string | null
+          category?: string
+          created_at?: string
+          description?: string
+          featured?: boolean
+          flavours?: string[] | null
+          id?: string
+          image_url?: string
+          ingredients?: string
+          is_active?: boolean
+          max_qty?: number
+          min_qty?: number
+          name?: string
+          prep_hours?: number
+          rating?: number
+          reviews?: number
+          short?: string
+          slug?: string
+          sort?: number
+          stock?: number
+          unit?: string
+          variants?: Json
+        }
+        Relationships: []
+      }
+      store_settings: {
+        Row: {
+          announcement: string | null
+          blackout_dates: string[]
+          booking_window_days: number
+          cod_max_order: number
+          email: string | null
+          free_delivery_over: number
+          hours: string | null
+          id: number
+          lead_days: number
+          min_order: number
+          phone: string | null
+          pickup_address: string | null
+          service_area: string | null
+          updated_at: string
+          whatsapp: string | null
+        }
+        Insert: {
+          announcement?: string | null
+          blackout_dates?: string[]
+          booking_window_days?: number
+          cod_max_order?: number
+          email?: string | null
+          free_delivery_over?: number
+          hours?: string | null
+          id?: number
+          lead_days?: number
+          min_order?: number
+          phone?: string | null
+          pickup_address?: string | null
+          service_area?: string | null
+          updated_at?: string
+          whatsapp?: string | null
+        }
+        Update: {
+          announcement?: string | null
+          blackout_dates?: string[]
+          booking_window_days?: number
+          cod_max_order?: number
+          email?: string | null
+          free_delivery_over?: number
+          hours?: string | null
+          id?: number
+          lead_days?: number
+          min_order?: number
+          phone?: string | null
+          pickup_address?: string | null
+          service_area?: string | null
+          updated_at?: string
+          whatsapp?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      claim_first_admin: { Args: never; Returns: boolean }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "staff" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +479,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "staff", "user"],
+    },
   },
 } as const
