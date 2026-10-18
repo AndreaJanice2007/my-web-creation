@@ -5,7 +5,7 @@ import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/shop/")({
   validateSearch: (s: Record<string, unknown>) => ({ q: typeof s.q === "string" ? s.q : undefined }),
-  head: () => seo("Shop All Treats", "Browse every homemade cake, brownie, cookie, cupcake, cheesecake and gift box from Pinch of Salt."),
+  head: () => seo("Shop All Treats", "Browse every homemade cake, brownie, cookie, cupcake, cheesecake and gift box from A Pinch of Home."),
   component: Shop,
 });
 

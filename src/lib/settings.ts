@@ -1,11 +1,11 @@
 // Sample business settings — placeholders to be replaced by the bakery owner.
 export const business = {
-  name: "Pinch of Salt",
-  tagline: "A Little Sweetness, Baked with Love.",
+  name: "A Pinch of Home",
+  tagline: "Homemade Happiness in Every Bite.",
   announcement: "Freshly baked happiness, made to order ✨",
   phone: "+91 90000 00000",
   whatsapp: "919000000000",
-  email: "hello@pinchofsalt.example",
+  email: "hello@apinchofhome.example",
   pickupAddress: "Sample address: 12 Baker's Lane, Indiranagar, Bengaluru 560038",
   hours: "Tue–Sun, 10:00 am – 8:00 pm",
   serviceArea: "Sample service area: select Bengaluru PIN codes",

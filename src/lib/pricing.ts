@@ -65,5 +65,5 @@ export function whatsappSummary(o: {
       return `• ${l.qty} × ${p?.name} (${v?.label})${l.flavour ? `, ${l.flavour}` : ""}${l.message ? `, msg: "${l.message}"` : ""} — ${formatINR(linePrice(l))}`;
     })
     .join("\n");
-  return `Hello Pinch of Salt! 🧁\nOrder ${o.number}\nName: ${o.name}\n\n${items}\n\n${o.method === "pickup" ? "Pickup" : "Delivery"}: ${o.date}, ${o.slot}\nPayment: ${o.payment}\nTotal: ${formatINR(o.total)}`;
+  return `Hello A Pinch of Home! 🧁\nOrder ${o.number}\nName: ${o.name}\n\n${items}\n\n${o.method === "pickup" ? "Pickup" : "Delivery"}: ${o.date}, ${o.slot}\nPayment: ${o.payment}\nTotal: ${formatINR(o.total)}`;
 }
