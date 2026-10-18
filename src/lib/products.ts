@@ -149,3 +149,7 @@ export const heroImage = hero;
 export const getCategory = (slug: string) => categories.find((c) => c.slug === slug);
 export const formatINR = (paise: number) =>
   "₹" + (paise / 100).toLocaleString("en-IN", { maximumFractionDigits: 0 });
+
+// Static fallback catalogue (same as the database seed) so pages render instantly.
+export const products = seedProducts;
+export const getProduct = (slug: string) => products.find((p) => p.slug === slug);

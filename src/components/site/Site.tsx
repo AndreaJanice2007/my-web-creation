@@ -144,7 +144,7 @@ export function ProductCard({ p }: { p: Product }) {
   return (
     <Link to="/product/$slug" params={{ slug: p.slug }} className="group flex flex-col overflow-hidden rounded-2xl bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
       <div className="relative aspect-square overflow-hidden bg-ivory">
-        <img src={p.image} alt={p.name} loading="lazy" width={600} height={600} className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${p.available ? "" : "opacity-60 grayscale"}`} />
+        <img src={p.image} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/hero/hero-1.jpg"; }} alt={p.name} loading="lazy" width={600} height={600} className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${p.available ? "" : "opacity-60 grayscale"}`} />
         {p.badge && <span className="absolute left-3 top-3 rounded-full bg-background/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-caramel">{p.badge}</span>}
         {!p.available && <span className="absolute right-3 top-3 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground">Sold out</span>}
       </div>
