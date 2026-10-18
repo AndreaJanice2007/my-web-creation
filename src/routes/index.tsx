@@ -2,11 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Croissant, Leaf, Cake, Truck, Gift, Quote } from "lucide-react";
 import { categories, products, heroImage } from "@/lib/products";
 import { ProductCard } from "@/components/site/Site";
-import { HeroCarousel, ProductCarousel } from "@/components/site/Carousels";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => seo("Homemade Happiness in Every Bite", "Homemade brownies, cookies, cupcakes, cheesecakes and celebration cakes from A Pinch of Home. Pickup and delivery in India."),
+  head: () => seo("A Little Sweetness, Baked with Love", "Homemade brownies, cookies, cupcakes, cheesecakes and celebration cakes from Pinch of Salt. Pickup and delivery in India."),
   component: Home,
 });
 
@@ -28,7 +27,23 @@ function Home() {
   const featured = products.filter((p) => p.featured).slice(0, 8);
   return (
     <>
-      <HeroCarousel />
+      <section className="relative overflow-hidden">
+        <div className="container-page grid items-center gap-10 py-12 md:grid-cols-2 md:py-20">
+          <div className="animate-rise">
+            <p className="eyebrow">Homemade · Small batch · Made to order</p>
+            <h1 className="mt-4 text-5xl leading-[1.02] md:text-7xl">A Little Sweetness, <em className="text-caramel">Baked with Love.</em></h1>
+            <p className="mt-6 max-w-md text-lg text-muted-foreground">From fudgy brownies to celebration cakes, discover homemade treats crafted to make your everyday moments a little more special.</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link to="/shop" className="btn-primary">Shop Our Treats</Link>
+              <Link to="/custom-cakes" className="btn-outline">Explore Custom Cakes</Link>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="absolute -inset-4 -z-10 rotate-2 rounded-[2.5rem] bg-blush/30" />
+            <img src={heroImage} alt="Brownies, cupcakes, cookies and a chocolate cake on a rustic table" width={1600} height={1200} className="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-lift" />
+          </div>
+        </div>
+      </section>
 
       <section className="container-page py-16">
         <div className="flex items-end justify-between">
@@ -52,7 +67,9 @@ function Home() {
         <div className="container-page">
           <p className="eyebrow">Bestsellers</p>
           <h2 className="mt-2 text-4xl md:text-5xl">Our customers' favourites</h2>
-          <ProductCarousel items={featured} />
+          <div className="mt-10 grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
+            {featured.map((p) => <ProductCard key={p.id} p={p} />)}
+          </div>
         </div>
       </section>
 
@@ -61,7 +78,7 @@ function Home() {
         <div>
           <p className="eyebrow">Our story</p>
           <h2 className="mt-2 text-4xl md:text-5xl">Baked with Heart, Shared with Love.</h2>
-          <p className="mt-6 text-muted-foreground">A Pinch of Home celebrates small-batch baking, thoughtful ingredients and comforting flavours — desserts made for everyday indulgences and the special occasions in between. That little pinch of salt? It's what makes the sweet things sing.</p>
+          <p className="mt-6 text-muted-foreground">Pinch of Salt celebrates small-batch baking, thoughtful ingredients and comforting flavours — desserts made for everyday indulgences and the special occasions in between. That little pinch of salt? It's what makes the sweet things sing.</p>
           <p className="mt-3 text-xs italic text-muted-foreground">Illustrative brand story — to be replaced with the bakery's own.</p>
           <Link to="/our-story" className="btn-outline mt-8">Read our story</Link>
         </div>
@@ -95,10 +112,10 @@ function Home() {
       </section>
 
       <section className="container-page">
-        <div className="flex items-end justify-between"><h2 className="text-3xl md:text-4xl">From our kitchen</h2><a href="#" className="text-sm underline">@apinchofhome (placeholder)</a></div>
+        <div className="flex items-end justify-between"><h2 className="text-3xl md:text-4xl">From our kitchen</h2><a href="#" className="text-sm underline">@pinchofsalt (placeholder)</a></div>
         <div className="mt-6 grid grid-cols-3 gap-2 md:grid-cols-6">
           {[heroImage, ...categories.map((c) => c.image)].slice(0, 6).map((src, i) => (
-            <img key={i} src={src} alt="Dessert from A Pinch of Home" loading="lazy" className="aspect-square w-full rounded-xl object-cover" />
+            <img key={i} src={src} alt="Dessert from Pinch of Salt" loading="lazy" className="aspect-square w-full rounded-xl object-cover" />
           ))}
         </div>
       </section>

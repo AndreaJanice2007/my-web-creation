@@ -1,7 +1,5 @@
-# A Pinch of Home — roadmap
-- [x] Start from repo AndreaJanice2007/my-web-creation (not from scratch)
-- [x] Rename to "A Pinch of Home", tagline "Homemade Happiness in Every Bite."
-- [ ] Unique image per product (28), hero + featured carousels
-- [ ] Pages: shop, categories, product, cart, checkout, confirmation, tracking, story, contact, FAQ, policies
-- [ ] Database, admin dashboard, server price validation, Razorpay (needs keys)
-- [ ] Show the website in preview quickly
+# Pinch of Salt roadmap
+- [x] Brand, design system, catalogue (26 products), shop + category pages
+- [ ] Product, cart, checkout, confirmation, tracking, info/policy pages
+- [ ] GitHub: user wants existing repo linked — not possible (export-only); user connects via Project settings → Git
+- [ ] Phase 2 (needs Lovable Cloud): saved orders, admin dashboard, Razorpay online payments

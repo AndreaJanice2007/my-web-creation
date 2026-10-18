@@ -8,18 +8,18 @@ import { useCart } from "@/lib/cart";
 
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <Link to="/" className="flex items-center gap-2" aria-label="A Pinch of Home home">
+    <Link to="/" className="flex items-center gap-2" aria-label="Pinch of Salt home">
       <img src={logoMark} alt="" width={40} height={40} className="h-10 w-10" />
       {!compact && (
         <span className="font-display text-2xl font-semibold leading-none tracking-tight">
-          A Pinch <em className="font-normal text-caramel">of</em> Home
+          Pinch <em className="font-normal text-caramel">of</em> Salt
         </span>
       )}
     </Link>
   );
 }
 
-export const waLink = (text = "Hi A Pinch of Home! I'd like to place an order.") =>
+export const waLink = (text = "Hi Pinch of Salt! I'd like to place an order.") =>
   `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(text)}`;
 
 export function Header() {
@@ -88,7 +88,7 @@ export function Footer() {
         <div className="lg:col-span-2">
           <div className="flex items-center gap-2">
             <span className="grid h-11 w-11 place-items-center rounded-full bg-background"><img src={logoMark} alt="" className="h-8 w-8" /></span>
-            <span className="font-display text-2xl">A Pinch of Home</span>
+            <span className="font-display text-2xl">Pinch of Salt</span>
           </div>
           <p className="mt-4 max-w-sm text-sm opacity-80">Small-batch, homemade bakes for everyday indulgence and every celebration in between.</p>
           <form className="mt-6 flex max-w-sm gap-2" onSubmit={(e) => { e.preventDefault(); (e.currentTarget.querySelector("input") as HTMLInputElement).value = ""; alert("Thanks! Newsletter signups will be connected soon."); }}>
@@ -127,7 +127,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-primary-foreground/15 py-5 text-center text-xs opacity-70">© {new Date().getFullYear()} A Pinch of Home. Contact details shown are placeholders.</div>
+      <div className="border-t border-primary-foreground/15 py-5 text-center text-xs opacity-70">© {new Date().getFullYear()} Pinch of Salt. Contact details shown are placeholders.</div>
     </footer>
   );
 }
@@ -144,7 +144,7 @@ export function ProductCard({ p }: { p: Product }) {
   return (
     <Link to="/product/$slug" params={{ slug: p.slug }} className="group flex flex-col overflow-hidden rounded-2xl bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
       <div className="relative aspect-square overflow-hidden bg-ivory">
-        <img src={p.image} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/hero/hero-1.jpg"; }} alt={p.name} loading="lazy" width={600} height={600} className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${p.available ? "" : "opacity-60 grayscale"}`} />
+        <img src={p.image} alt={p.name} loading="lazy" width={600} height={600} className={`h-full w-full object-cover transition duration-700 group-hover:scale-105 ${p.available ? "" : "opacity-60 grayscale"}`} />
         {p.badge && <span className="absolute left-3 top-3 rounded-full bg-background/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-caramel">{p.badge}</span>}
         {!p.available && <span className="absolute right-3 top-3 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground">Sold out</span>}
       </div>

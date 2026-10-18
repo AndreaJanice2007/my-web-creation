@@ -1,12 +1,12 @@
-# A Pinch of Home
+# My Web Creation
 
-dont build untill i say i want to create web sit name a pinch of home
+build a website accordingly
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/63a7497f-87cb-4883-9328-c0e87e460cd7).
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/0cae357e-d77c-4e35-98a1-6c1a414a97e6).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.

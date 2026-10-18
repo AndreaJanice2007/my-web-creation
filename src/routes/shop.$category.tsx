@@ -10,7 +10,7 @@ export const Route = createFileRoute("/shop/$category")({
     if (!c) throw notFound();
     return { slug: c.slug, name: c.name, blurb: c.blurb };
   },
-  head: ({ loaderData }) => loaderData ? seo(loaderData.name, `${loaderData.blurb} Homemade ${loaderData.name.toLowerCase()} from A Pinch of Home.`) : { meta: [{ title: "Not found | A Pinch of Home" }, { name: "robots", content: "noindex" }] },
+  head: ({ loaderData }) => loaderData ? seo(loaderData.name, `${loaderData.blurb} Homemade ${loaderData.name.toLowerCase()} from Pinch of Salt.`) : { meta: [{ title: "Not found | Pinch of Salt" }, { name: "robots", content: "noindex" }] },
   notFoundComponent: () => <div className="py-24 text-center"><h1 className="text-4xl">Category not found</h1><Link to="/shop" className="btn-primary mt-6">Shop all</Link></div>,
   component: Cat,
 });

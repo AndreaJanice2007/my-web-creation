@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "A Pinch of Home — Homemade Bakery" },
+      { title: "Pinch of Salt — Homemade Bakery" },
       { name: "description", content: "Homemade brownies, cookies, cupcakes and celebration cakes, baked to order." },
       { name: "theme-color", content: "#FFF8F0" },
     ],
